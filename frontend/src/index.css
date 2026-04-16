@@ -27,8 +27,41 @@ html {
 }
 
 .dark {
-  --color-bg: 15 15 15;
-  --color-bg-alt: 30 30 30;
-  --color-card: 40 40 40;
+  /* fundo base mais profundo, puxando para roxo/azul */
+  --color-bg: 255 255 255; /* não usaremos diretamente para o gradiente, pode ficar neutro */
+  --color-bg-alt: 16 16 40;   /* cards e áreas internas */
+  --color-card: 20 20 50;
   --color-text: 240 240 240;
+  --color-text-alt: 180 180 220;
+
+  /* opcional: ajustar glass */
+  --glass-bg: 260 80% 6% / 0.6; /* roxo bem escuro semi-transparente */
+}
+
+/* App.css limpo - todos estilos via Tailwind CSS v4 */
+
+/* Scrollbar customizada para listas */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: hsl(var(--color-bg-alt));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-text-alt / 0.3));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-text-alt / 0.5));
+}
+
+/* Efeitos glassmorphism adicionais se necessário */
+.glass-card {
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(0 0% 100% / 0.18);
 }
