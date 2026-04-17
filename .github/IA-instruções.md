@@ -45,7 +45,9 @@ laboratorio-rotas-react/
 │   │   │   ├── input.jsx
 │   │   │   ├── TarefaList.jsx
 │   │   │   └── ui/ThemeToggle.jsx
-│   │   ├── App.jsx
+│   │   ├── App.jsx          # componente principal
+│   │   ├── index.css        # estilos globais e variáveis CSS
+│   │   ├── Auth.jsx         # tela de autenticação/login
 │   │   └── ...
 │   ├── index.html
 │   ├── package.json
