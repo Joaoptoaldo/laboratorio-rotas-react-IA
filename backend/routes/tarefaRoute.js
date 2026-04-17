@@ -26,11 +26,11 @@ function authMiddleware(req, res, next) {
 
 export const router = Router();
 
-// Aplica o middleware de autenticação em todas as rotas abaixo
+// aplica o middleware de autenticação em todas as rotas
 router.use(authMiddleware);
 
 
-// Cria tarefa vinculada ao usuário autenticado
+// cria tarefa vinculada ao usuário autenticado
 router.post("/", async (req, res) => {
   try {
     const { content } = req.body;
@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
 });
 
 
-// Lista tarefas apenas do usuário autenticado
+// lista tarefas apenas do usuário autenticado
 router.get("/", async (req, res) => {
   try {
     const userId = req.user?.userId;
@@ -74,7 +74,7 @@ router.get("/", async (req, res) => {
 });
 
 
-// PATCH protegido: concluir tarefa (toggle isComplete)
+// PATCH protegido (toggle isComplete)
 router.patch("/:idTarefa", async (req, res) => {
   try {
     const { idTarefa } = req.params;
@@ -87,7 +87,7 @@ router.patch("/:idTarefa", async (req, res) => {
       return res.status(401).json({ message: "Usuário não autenticado." });
     }
 
-    // Busca tarefa
+    // busca tarefa
     const [t] = await db.select().from(tarefa).where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId));
     if (!t) {
       return res.status(404).json({ message: "Tarefa não encontrada ou não pertence ao usuário." });

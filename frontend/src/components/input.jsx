@@ -39,20 +39,21 @@ export default function Input({ getTarefa }) {
         <span className="emoji text-xl text-blue-400/80 group-hover:text-blue-400 transition-colors">◇</span>
       </div>
       <input
-        className="flex-1 min-w-0 p-3 sm:p-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/10 focus:border-blue-400 focus:ring-4 focus:ring-blue-400/30 focus:outline-none focus:placeholder-white/30 transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg"
+        className="flex-1 min-w-0 p-3 sm:p-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-white/70 focus:bg-white/20 focus:border-blue-400 focus:ring-4 focus:ring-blue-400/30 focus:outline-none focus:placeholder-white/40 transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg font-medium"
         type="text"
-        placeholder="Digite uma nova tarefa e pressione Enter..."
+        placeholder="Digite uma tarefa..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
         onKeyDown={handleKeyDown}
-        style={{fontFamily: 'Inter, Arial, sans-serif'}}
+        aria-label="Digite uma tarefa"
       />
       <button 
-        className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-blue-600 text-white font-bold shadow-lg hover:from-emerald-600 hover:to-blue-700 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 whitespace-nowrap text-sm mt-2 sm:mt-0"
+        className="w-full sm:w-auto px-7 py-3 rounded-2xl bg-gradient-to-r from-emerald-400 via-emerald-500 to-blue-600 text-white font-bold flex items-center justify-center gap-2 shadow-lg hover:from-emerald-500 hover:to-blue-700 hover:shadow-xl transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 whitespace-nowrap text-base mt-2 sm:mt-0 border-2 border-emerald-400"
         onClick={handleAdd} 
         disabled={loading || !content.trim()}
-        style={{fontFamily: 'Inter, Arial, sans-serif'}}
+        aria-label="Adicionar tarefa"
       >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 mr-1 text-emerald-300 drop-shadow" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#059669"/><path d="M12 8v8M8 12h8" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/></svg>
         {loading ? "..." : "Adicionar"}
       </button>
     </div>

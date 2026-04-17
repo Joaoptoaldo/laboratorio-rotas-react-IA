@@ -4,7 +4,6 @@ import './App.css';
 import Auth from "./Auth";
 import Input from "./components/input";
 import TarefaList from "./components/TarefaList";
-import ThemeToggle from "./components/ui/ThemeToggle";
 
 const backend = import.meta.env.VITE_BACKEND;
 
@@ -12,6 +11,7 @@ const backend = import.meta.env.VITE_BACKEND;
 function App() {
   const [tarefas, setTarefas] = useState([]);
   const [autenticado, setAutenticado] = useState(() => !!localStorage.getItem("token"));
+  // Avatar/nome do usuário removido
 
   const getTarefa = async () => {
     try {
@@ -68,16 +68,16 @@ function App() {
 
   return (
     <div
-      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
+      className="min-h-screen py-6 px-2 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
       style={{fontFamily: 'Inter, Arial, sans-serif'}}
     >
-      <div className="max-w-2xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <div className="flex items-center gap-3">
+      <div className="max-w-2xl mx-auto w-full">
+        <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 gap-4">
+          <div className="flex items-center gap-3 w-full">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center">
               <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />
             </div>
-            <div>
+            <div className="text-left">
               <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.5)] text-white">
                 Tarefas
               </h1>
@@ -86,11 +86,18 @@ function App() {
               </p>
             </div>
           </div>
-          {/* <ThemeToggle /> */}
-          <button className="logout-btn" onClick={handleLogout}>Sair</button>
+          {/* Botão Sair fixo no topo direito no mobile, inline no desktop */}
+          <button
+            className="logout-btn px-5 py-2 sm:px-6 sm:py-3 rounded-xl text-base sm:text-lg font-bold bg-white/10 hover:bg-white/20 border border-white/30 shadow transition absolute right-2 top-2 sm:static sm:right-auto sm:top-auto min-w-[70px] sm:min-w-0"
+            style={{zIndex: 50, top: '0.5rem', transform: 'none'}}
+            onClick={handleLogout}
+          >
+            Sair
+          </button>
+          <div className="block sm:hidden" style={{height: '2.5rem'}}></div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           <Input getTarefa={getTarefa} />
           <TarefaList tarefas={tarefas} updateTarefa={updateTarefa} getTarefa={getTarefa} />
         </div>

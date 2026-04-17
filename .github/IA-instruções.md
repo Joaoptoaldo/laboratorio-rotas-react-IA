@@ -1,7 +1,6 @@
-
 # Contexto do Projeto
 
-Você está me ajudando a construir o **Laboratório de Rotas**, um sistema simples para cadastro e gerenciamento de tarefas (to-do list), com fins didáticos para estudo de rotas, backend e frontend modernos.
+Você está me ajudando a construir o **Laboratório de Rotas**, um sistema simples para cadastro de usuários, cadastro e gerenciamento de tarefas (to-do list), com fins didáticos para estudo de rotas, backend e frontend modernos.
 
 ## Stack do Backend
 
@@ -59,12 +58,12 @@ laboratorio-rotas-react/
 - **Tarefa** — item de tarefa com os campos:
     - `id` (serial, PK)
     - `content` (texto, obrigatório)
-    - `isComplet` (booleano, padrão: false)
+    - `isComplete` (booleano, padrão: false)
 
 ## Regras de Negócio
 
 - Cada tarefa tem um texto obrigatório (`content`)
-- Tarefas podem ser marcadas como completas (`isComplet: true`)
+- Tarefas podem ser marcadas como completas (`isComplete: true`)
 - Não é permitido criar tarefa sem texto
 - Só é possível marcar como completa, não remover nem editar o texto
 - O backend retorna mensagens de erro amigáveis em caso de falha
