@@ -34,17 +34,21 @@ export default function Input({ getTarefa }) {
   };
 
   return (
-    <div className="task-input-wrapper">
-      <span style={{ color: "var(--c-text-muted)", fontSize: "1rem" }}>◇</span>
+    <div className="glass-card p-5 rounded-3xl shadow-xl backdrop-blur-xl border border-white/20 group hover:shadow-2xl transition-all duration-300 w-full flex items-center gap-4">
+      <span className="emoji text-xl text-blue-400/80 group-hover:text-blue-400 transition-colors">◇</span>
       <input
-        className="task-input"
+        className="flex-1 min-w-0 p-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:bg-white/10 focus:border-blue-400 focus:ring-4 focus:ring-blue-400/30 focus:outline-none focus:placeholder-white/30 transition-all duration-300 shadow-md hover:shadow-lg text-lg"
         type="text"
-        placeholder="Digite uma nova tarefa..."
+        placeholder="Digite uma nova tarefa e pressione Enter..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <button className="btn-add" onClick={handleAdd} disabled={loading}>
+      <button 
+        className="btn-add px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-blue-600 text-white font-bold shadow-lg hover:from-emerald-600 hover:to-blue-700 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 whitespace-nowrap text-sm"
+        onClick={handleAdd} 
+        disabled={loading || !content.trim()}
+      >
         {loading ? "..." : "Adicionar"}
       </button>
     </div>

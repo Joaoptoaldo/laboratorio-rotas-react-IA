@@ -41,33 +41,55 @@ export default function Auth({ onAuth }) {
     }
   };
 
+  // Wrapper para aplicar o mesmo background e centralização do App.jsx
   return (
-    <div className="auth-wrapper">
-      <h2>{isLogin ? "Entrar" : "Cadastrar"}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={e => setSenha(e.target.value)}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "..." : isLogin ? "Entrar" : "Cadastrar"}
-        </button>
-      </form>
-      <button className="toggle-auth" onClick={() => setIsLogin(v => !v)}>
-        {isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Entrar"}
-      </button>
-      {error && <div className="auth-error">{error}</div>}
+    <div
+      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 backdrop-blur-sm text-[hsl(var(--color-text))] bg-white dark:bg-[radial-gradient(circle_at_top,_#4c1d95,_#1e293b_55%,_#020617_100%)]"
+    >
+      <div className="max-w-md mx-auto flex flex-col items-center justify-center min-h-[70vh]">
+        <div className="w-full glass-card p-8 rounded-3xl shadow-xl backdrop-blur-md border border-white/30 flex flex-col justify-center hover:shadow-2xl hover:backdrop-blur-xl hover:border-white/40 hover:bg-white/5 transition-all duration-300">
+          <div className="flex flex-col items-center mb-8">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center mb-2">
+              <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />
+            </div>
+            <h2 className="text-3xl font-black text-center text-white/90 drop-shadow-lg">
+              {isLogin ? "Bem-vindo!" : "Cadastre-se"}
+            </h2>
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input
+              className="w-full p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-white/15"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <input
+              className="w-full p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-white/15"
+              type="password"
+              placeholder="Senha"
+              value={senha}
+              onChange={e => setSenha(e.target.value)}
+              required
+            />
+            <button 
+              className="w-full py-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 text-white/90 font-bold shadow-lg hover:bg-white/30 hover:border-white/40 hover:text-white transition-all duration-200 text-lg disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]"
+              type="submit" disabled={loading}
+            >
+              {loading ? "..." : isLogin ? "Entrar" : "Cadastrar"}
+            </button>
+          </form>
+          <button className="mt-6 px-6 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 text-white/90 hover:bg-white/20 hover:border-white/40 hover:text-white transition-all duration-200 text-sm font-medium mx-auto block w-full active:scale-[0.98]" onClick={() => setIsLogin(v => !v)}>
+            {isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Entrar"}
+          </button>
+          {error && (
+            <div className="mt-6 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/30 text-white/80 shadow-lg hover:bg-white/20 transition-all">
+              {error}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

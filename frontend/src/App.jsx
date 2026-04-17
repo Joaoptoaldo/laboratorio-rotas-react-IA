@@ -4,7 +4,7 @@ import './App.css';
 import Auth from "./Auth";
 import Input from "./components/input";
 import TarefaList from "./components/TarefaList";
-import ThemeToggle from "./components/ui/ThemeToggle";
+// import ThemeToggle from "./components/ui/ThemeToggle";
 
 const backend = import.meta.env.VITE_BACKEND;
 
@@ -69,14 +69,8 @@ function App() {
 
   return (
     <div
-      className="
-        min-h-screen
-        py-12 px-4 sm:px-6 lg:px-8
-        backdrop-blur-sm
-        text-[hsl(var(--color-text))]
-        bg-white
-        dark:bg-[radial-gradient(circle_at_top,_#4c1d95,_#1e293b_55%,_#020617_100%)]
-      "
+      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 backdrop-blur-sm text-white bg-[radial-gradient(circle_at_top,_#3b0764,_#1e293b_70%,_#020617_100%)] font-sans"
+      style={{fontFamily: 'Inter, Arial, Helvetica, sans-serif'}}
     >
       <div className="max-w-2xl mx-auto">
         <div className="flex justify-between items-center mb-12">
@@ -85,16 +79,16 @@ function App() {
               <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />
             </div>
             <div>
-              <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">
+              <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.7)] text-white font-sans">
                 Tarefas
               </h1>
-              <p className="text-sm mt-1 text-[hsl(var(--color-text-alt))]">
+              <p className="text-sm mt-1 text-white/90 font-sans">
                 Gerencie suas tarefas diárias
               </p>
             </div>
           </div>
-          <ThemeToggle />
-          <button className="logout-btn" onClick={handleLogout}>Sair</button>
+          {/* <ThemeToggle /> */}
+          <button className="logout-btn text-white font-bold hover:text-yellow-300 transition-colors duration-200 font-sans" onClick={handleLogout}>Sair</button>
         </div>
 
         <div className="space-y-6">
