@@ -68,14 +68,8 @@ function App() {
 
   return (
     <div
-      className="
-        min-h-screen
-        py-12 px-4 sm:px-6 lg:px-8
-        backdrop-blur-sm
-        text-[hsl(var(--color-text))]
-        bg-white
-        dark:bg-[radial-gradient(circle_at_top,_#4c1d95,_#1e293b_55%,_#020617_100%)]
-      "
+      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
+      style={{fontFamily: 'Inter, Arial, sans-serif'}}
     >
       <div className="max-w-2xl mx-auto">
         <div className="flex justify-between items-center mb-12">
@@ -84,15 +78,15 @@ function App() {
               <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />
             </div>
             <div>
-              <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">
+              <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.5)] text-white">
                 Tarefas
               </h1>
-              <p className="text-sm mt-1 text-[hsl(var(--color-text-alt))]">
+              <p className="text-sm mt-1 text-white/80">
                 Gerencie suas tarefas diárias
               </p>
             </div>
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <button className="logout-btn" onClick={handleLogout}>Sair</button>
         </div>
 
