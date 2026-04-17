@@ -74,8 +74,8 @@ router.get("/", async (req, res) => {
 });
 
 
-// PATCH protegido: só o dono pode alterar
-router.patch(":idTarefa", async (req, res) => {
+// PATCH protegido: concluir tarefa (toggle isComplete)
+router.patch("/:idTarefa", async (req, res) => {
   try {
     const { idTarefa } = req.params;
     const userId = req.user?.userId;
@@ -87,20 +87,73 @@ router.patch(":idTarefa", async (req, res) => {
       return res.status(401).json({ message: "Usuário não autenticado." });
     }
 
-    // Só permite editar se for dono
-    const [editado] = await db
-      .update(tarefa)
-      .set({ isComplete: true })
-      .where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId))
-      .returning();
-
-    if (!editado) {
+    // Busca tarefa
+    const [t] = await db.select().from(tarefa).where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId));
+    if (!t) {
       return res.status(404).json({ message: "Tarefa não encontrada ou não pertence ao usuário." });
     }
 
-    res.status(200).json({ message: "Tarefa atualizada" });
+    const [editado] = await db
+      .update(tarefa)
+      .set({ isComplete: !t.isComplete })
+      .where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId))
+      .returning();
+
+    res.status(200).json({ message: "Tarefa atualizada", tarefa: editado });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internamente ferrado" });
+  }
+});
+
+// PATCH para editar texto da tarefa
+router.patch("/:idTarefa/edit", async (req, res) => {
+  try {
+    const { idTarefa } = req.params;
+    const { content } = req.body;
+    const userId = req.user?.userId;
+    if (!idTarefa || !content) {
+      return res.status(400).json({ message: "ID e novo conteúdo obrigatórios" });
+    }
+    if (!userId) {
+      return res.status(401).json({ message: "Usuário não autenticado." });
+    }
+    const [editado] = await db
+      .update(tarefa)
+      .set({ content })
+      .where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId))
+      .returning();
+    if (!editado) {
+      return res.status(404).json({ message: "Tarefa não encontrada ou não pertence ao usuário." });
+    }
+    res.status(200).json({ message: "Tarefa editada", tarefa: editado });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao editar tarefa" });
+  }
+});
+
+// DELETE para remover tarefa
+router.delete("/:idTarefa", async (req, res) => {
+  try {
+    const { idTarefa } = req.params;
+    const userId = req.user?.userId;
+    if (!idTarefa) {
+      return res.status(400).json({ message: "Sem o id da tarefa" });
+    }
+    if (!userId) {
+      return res.status(401).json({ message: "Usuário não autenticado." });
+    }
+    const [removida] = await db
+      .delete(tarefa)
+      .where(eq(tarefa.id, idTarefa), eq(tarefa.userId, userId))
+      .returning();
+    if (!removida) {
+      return res.status(404).json({ message: "Tarefa não encontrada ou não pertence ao usuário." });
+    }
+    res.status(200).json({ message: "Tarefa removida", tarefa: removida });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao remover tarefa" });
   }
 });
