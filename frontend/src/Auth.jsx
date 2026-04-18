@@ -52,7 +52,7 @@ export default function Auth({ onAuth }) {
         <div className="w-full glass-card p-8 rounded-3xl shadow-xl backdrop-blur-md border border-white/60 bg-black/60 dark:bg-black/70 flex flex-col justify-center hover:shadow-2xl hover:backdrop-blur-xl hover:border-white/80 hover:bg-black/80 transition-all duration-300">
           <div className="flex flex-col items-center mb-8">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center mb-2">
-              <img src="/logo.svg" className="w-8 h-8" alt="Logo" />
+              <img src="/logo.svg" className="w-7 h-7 sm:w-8 sm:h-8" alt="Logo" />
             </div>
             <h2 className="text-3xl font-black text-center text-white/90 drop-shadow-lg">
               {isLogin ? "Bem-vindo!" : "Cadastre-se"}
@@ -102,7 +102,7 @@ export default function Auth({ onAuth }) {
         aria-label="Ver código fonte do projeto no GitHub"
         style={{ backdropFilter: 'blur(6px)' }}
       >
-        <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
+        <img src={githubIcon} alt="GitHub" className="w-5 h-5 sm:w-6 sm:h-6" />
         <span className="hidden sm:inline">Link do projeto</span>
         <span className="sm:hidden">GitHub</span>
       </a>

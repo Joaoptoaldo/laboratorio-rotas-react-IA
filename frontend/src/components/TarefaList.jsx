@@ -22,7 +22,7 @@ export default function TarefaList({ tarefas, updateTarefa, getTarefa }) {
         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 inline-block opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6" /></svg>
         Clique no ícone para concluir uma tarefa
       </div>
-      <div className="space-y-4 max-h-[500px] overflow-y-auto scrollbar-thin text-white" style={{fontFamily: 'Inter, Arial, sans-serif'}}>
+      <div className="space-y-4 text-white" style={{fontFamily: 'Inter, Arial, sans-serif'}}>
         {tarefas.map((tarefa) => (
           <TarefaCard
             key={tarefa.id}
@@ -154,23 +154,23 @@ function TarefaCard({ tarefa, onToggle, getTarefa }) {
         {!editando && (
           <div className="flex gap-2 mt-3 sm:mt-0 w-full sm:w-auto">
             <button
-              className="flex-1 sm:flex-none px-4 py-2 rounded-2xl bg-blue-600 text-white font-bold flex items-center gap-2 shadow-md hover:bg-blue-700 hover:shadow-lg transition"
+              className="flex-1 sm:flex-none px-2 py-1 sm:px-4 sm:py-2 rounded-2xl bg-blue-600 text-white font-bold flex items-center gap-2 shadow-md hover:bg-blue-700 hover:shadow-lg transition text-sm sm:text-base"
               onClick={() => setEditando(true)}
               disabled={loading}
               title="Editar tarefa"
               aria-label="Editar tarefa"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H7v-2.414a2 2 0 01.586-1.414z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H7v-2.414a2 2 0 01.586-1.414z" /></svg>
               Editar
             </button>
             <button
-              className="flex-1 sm:flex-none px-4 py-2 rounded-2xl bg-red-600 text-white font-bold flex items-center gap-2 shadow-md hover:bg-red-700 hover:shadow-lg transition"
+              className="flex-1 sm:flex-none px-2 py-1 sm:px-4 sm:py-2 rounded-2xl bg-red-600 text-white font-bold flex items-center gap-2 shadow-md hover:bg-red-700 hover:shadow-lg transition text-sm sm:text-base"
               onClick={removerTarefa}
               disabled={loading}
               title="Remover tarefa"
               aria-label="Remover tarefa"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
               Remover
             </button>
           </div>

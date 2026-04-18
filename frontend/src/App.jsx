@@ -71,14 +71,14 @@ function App() {
 
   return (
     <div
-      className="min-h-screen py-6 px-2 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
+      className="min-h-screen py-6 px-1 xs:px-2 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
       style={{fontFamily: 'Inter, Arial, sans-serif'}}
     >
       <div className="max-w-2xl mx-auto w-full">
         <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 gap-4">
           <div className="flex items-center gap-3 w-full">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center">
-              <img src="/logo.svg" className="w-8 h-8" alt="Logo" />
+              <img src="/logo.svg" className="w-7 h-7 sm:w-8 sm:h-8" alt="Logo" />
             </div>
             <div className="text-left">
               <h1 className="text-5xl md:text-6xl font-black drop-shadow-2xl [text-shadow:0_4px_8px_rgba(0,0,0,0.5)] text-white">
@@ -112,12 +112,12 @@ function App() {
         href="https://github.com/Joaoptoaldo/laboratorio-rotas-react-IA"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition text-white text-sm font-medium backdrop-blur"
+        className="fixed bottom-4 right-1 sm:right-4 z-50 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition text-white text-sm font-medium backdrop-blur"
         title="Ver código fonte do projeto no GitHub"
         aria-label="Ver código fonte do projeto no GitHub"
         style={{backdropFilter: 'blur(6px)'}}
       >
-        <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
+        <img src={githubIcon} alt="GitHub" className="w-5 h-5 sm:w-6 sm:h-6" />
         <span className="hidden sm:inline">Link do projeto</span>
         <span className="sm:hidden">GitHub</span>
       </a>
