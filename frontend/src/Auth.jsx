@@ -41,13 +41,13 @@ export default function Auth({ onAuth }) {
     }
   };
 
-  // Wrapper para aplicar o mesmo background e centralização do App.jsx
+  
   return (
     <div
       className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 backdrop-blur-sm text-[hsl(var(--color-text))] bg-white dark:bg-[radial-gradient(circle_at_top,_#4c1d95,_#1e293b_55%,_#020617_100%)]"
     >
       <div className="max-w-md mx-auto flex flex-col items-center justify-center min-h-[70vh]">
-        <div className="w-full glass-card p-8 rounded-3xl shadow-xl backdrop-blur-md border border-white/30 flex flex-col justify-center hover:shadow-2xl hover:backdrop-blur-xl hover:border-white/40 hover:bg-white/5 transition-all duration-300">
+        <div className="w-full glass-card p-8 rounded-3xl shadow-xl backdrop-blur-md border border-white/60 bg-black/60 dark:bg-black/70 flex flex-col justify-center hover:shadow-2xl hover:backdrop-blur-xl hover:border-white/80 hover:bg-black/80 transition-all duration-300">
           <div className="flex flex-col items-center mb-8">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center mb-2">
               <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />

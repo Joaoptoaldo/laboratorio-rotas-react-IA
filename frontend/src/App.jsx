@@ -5,6 +5,9 @@ import Auth from "./Auth";
 import Input from "./components/input";
 import TarefaList from "./components/TarefaList";
 
+
+import githubIcon from '/src/assets/github.svg';
+
 const backend = import.meta.env.VITE_BACKEND;
 
 
@@ -86,14 +89,16 @@ function App() {
               </p>
             </div>
           </div>
-          {/* Botão Sair fixo no topo direito no mobile, inline no desktop */}
-          <button
-            className="logout-btn px-5 py-2 sm:px-6 sm:py-3 rounded-xl text-base sm:text-lg font-bold bg-white/10 hover:bg-white/20 border border-white/30 shadow transition absolute right-2 top-2 sm:static sm:right-auto sm:top-auto min-w-[70px] sm:min-w-0"
-            style={{zIndex: 50, top: '0.5rem', transform: 'none'}}
-            onClick={handleLogout}
-          >
-            Sair
-          </button>
+          {/* btn sair no topo */}
+          <div className="flex items-center gap-2 absolute right-2 top-2 sm:static sm:right-auto sm:top-auto z-50">
+            <button
+              className="logout-btn px-5 py-2 sm:px-6 sm:py-3 rounded-xl text-base sm:text-lg font-bold bg-white/10 hover:bg-white/20 border border-white/30 shadow transition min-w-[70px] sm:min-w-0"
+              onClick={handleLogout}
+            >
+              Sair
+            </button>
+          </div>
+          {/* espaço extra no mobile pra não sobrepor */}
           <div className="block sm:hidden" style={{height: '2.5rem'}}></div>
         </div>
 
@@ -102,6 +107,20 @@ function App() {
           <TarefaList tarefas={tarefas} updateTarefa={updateTarefa} getTarefa={getTarefa} />
         </div>
       </div>
+      {/* btn flutuante do github*/}
+      <a
+        href="https://github.com/Joaoptoaldo/laboratorio-rotas-react-IA"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition text-white text-sm font-medium backdrop-blur"
+        title="Ver código fonte do projeto no GitHub"
+        aria-label="Ver código fonte do projeto no GitHub"
+        style={{backdropFilter: 'blur(6px)'}}
+      >
+        <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
+        <span className="hidden sm:inline">link do projeto</span>
+        <span className="sm:hidden">GitHub</span>
+      </a>
     </div>
   );
 }

@@ -26,9 +26,9 @@ Você está me ajudando a construir o **Laboratório de Rotas**, um sistema simp
 ## Estrutura do Projeto
 
 ```
-laboratorio-rotas-react/
+laboratorio-rotas-react-IA/
 ├── .github/
-│   └── copilot-instruções.md
+│   └── IA-instruções.md
 ├── backend/
 │   ├── database/
 │   │   ├── db.js           # conexão com o banco
@@ -106,3 +106,22 @@ Se eu errar algo:
 - Sempre que sugerir, executar ou recomendar commits, use o padrão Conventional Commits.
 - Se eu pedir sugestão de mensagem de commit, sempre sugira no formato Conventional Commits.
 - Exemplos: feat:, fix:, chore:, refactor:, docs:, test:, etc.
+
+---
+
+## Orientações sobre Docker e Deploy
+
+- O projeto utiliza Docker para facilitar o desenvolvimento e o deploy, com arquivos prontos em `docker/`.
+- Existem dois Dockerfiles principais:
+  - `docker/Dockerfile.backend`: constrói o backend Node.js/Express.
+  - `docker/Dockerfile.frontend`: constrói o frontend React/Vite e serve via Nginx.
+- O orquestrador é o `docker/docker-compose.yml`, que sobe frontend e backend juntos.
+- O banco de dados PostgreSQL NÃO está incluso no docker-compose, devendo ser externo ou rodado à parte.
+- As variáveis de ambiente devem ser configuradas em `backend/.env` e `frontend/.env`.
+- O frontend pode ser hospedado no Vercel, mas também pode ser containerizado.
+
+**Quando sugerir comandos, exemplos ou instruções de deploy, sempre priorize o uso do Docker Compose real do projeto e explique que o banco não está incluso no compose.**
+
+**Nunca sugira comandos genéricos de Docker que não reflitam a estrutura real do projeto.**
+
+---

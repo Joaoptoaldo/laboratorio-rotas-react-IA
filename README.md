@@ -55,6 +55,63 @@ O principal objetivo é mostrar como a IA, especialmente ferramentas como GitHub
 
 ---
 
+## Execução com Docker Compose
+
+O projeto já possui configuração pronta para execução com Docker Compose, orquestrando frontend e backend. Os arquivos estão em `docker/`.
+
+### Como executar
+
+1. Certifique-se de ter Docker e Docker Compose instalados.
+2. Na raiz do projeto, execute:
+
+```bash
+cd docker
+# Build e sobe todos os serviços (frontend e backend)
+docker-compose up --build
+```
+
+- O backend ficará disponível em `http://localhost:3001`
+- O frontend ficará disponível em `http://localhost:8080`
+
+### Estrutura dos containers
+- **Backend:** Usa `docker/Dockerfile.backend`, expõe porta 3001, lê código de `../backend`.
+- **Frontend:** Usa `docker/Dockerfile.frontend`, builda o React e serve via Nginx na porta 8080.
+- (O banco de dados deve ser configurado externamente, ex: Neon, Render, Railway, ou localmente.)
+
+### Variáveis de ambiente
+- Configure o arquivo `.env` do backend (exemplo em `backend/.env`).
+- Configure o arquivo `.env` do frontend (exemplo em `frontend/.env`).
+
+> O docker-compose atual não sobe o banco de dados. Recomenda-se usar um serviço gerenciado (Neon, Render, Railway) ou rodar um container PostgreSQL à parte.
+
+---
+
+## Utilização com Docker
+
+O projeto pode ser executado facilmente em ambiente Docker, facilitando a configuração e o deploy, especialmente para o backend (Node.js + PostgreSQL). Exemplos de uso:
+
+- Suba o banco de dados PostgreSQL rapidamente com um comando:
+
+```bash
+docker run --name postgres-tarefas -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=tarefas -p 5432:5432 -d postgres:15
+```
+
+- (Opcional) Suba o backend em um container (exemplo básico):
+
+```bash
+docker build -t backend-tarefas ./backend
+# Depois
+# docker run -p 3001:3001 --env-file ./backend/.env backend-tarefas
+```
+
+- Você pode adaptar um arquivo `docker-compose.yml` para orquestrar backend, banco e frontend juntos.
+
+> O frontend (React) pode ser hospedado facilmente no Vercel, mas também pode ser containerizado se desejar.
+
+**Dica:** Lembre-se de configurar as variáveis de ambiente corretamente (ex: `DATABASE_URL` no backend, `VITE_BACKEND` no frontend).
+
+---
+
 ## Licença
 
 Projeto aberto para fins educacionais. Sinta-se à vontade para clonar, estudar e adaptar os códigos.
