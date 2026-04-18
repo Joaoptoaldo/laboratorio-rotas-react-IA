@@ -1,12 +1,29 @@
 # Laboratório de Rotas - Eficiência com IA
 
-[→ Veja também as instruções detalhadas de uso de IA neste projeto](.github/IA-instruções.md)
+[→ Veja também as instruções detalhadas para IA neste projeto](.github/IA-instruções.md)
 
 ## Sobre 
 
 Esse é um projeto didático fullstack (Node.js + React) criado para demonstrar, na prática, como a inteligência artificial pode ser utilizada de forma eficiente e responsável no desenvolvimento de aplicações web modernas.
 
 O sistema implementa um gerenciador de tarefas (to-do list) com autenticação, CRUD, integração frontend-backend e interface moderna, servindo como laboratório para estudo de rotas, arquitetura e automação de código.
+
+---
+
+## Decisões de Arquitetura e Trade-offs
+
+**Minhas escolhas:**
+
+- Optei por **Drizzle ORM** em vez de Prisma por ser mais simples e direto para o escopo didático, evitando complexidade desnecessária.
+- Implementei **autenticação JWT** para garantir isolamento de tarefas por usuário, mesmo sabendo que tokens exigem renovação e controle de expiração.
+- Estruturei o backend em rotas separadas para facilitar manutenção e testes.
+- Preferi **Tailwind CSS** ao invés de styled-components para acelerar prototipação, mesmo abrindo mão de temas dinâmicos avançados.
+- Não utilizei Zustand/Redux porque o foco era navegação e autenticação, não gerenciamento global de estado.
+
+**Principais trade-offs:**
+
+- Priorização da simplicidade e clareza.
+- Menos flexibilidade em temas e estados globais, mas maior foco didático.
 
 ---
 
@@ -25,9 +42,15 @@ O principal objetivo é mostrar como a IA, especialmente ferramentas como GitHub
 
 - **Geração de código CRUD**: rotas, controllers, integração com Drizzle ORM e PostgreSQL, componentes React e hooks.
 - **Refino de UI/UX**: sugestões de estilos, responsividade, acessibilidade e feedback visual.
-- **Automação de testes e validações**: scripts de validação, mensagens de erro amigáveis e fluxos de autenticação.
-- **Documentação e explicações**: geração de README, comentários de código e instruções de uso.
+- **Automação de testes e validações**: scripts de validação, mensagens de erro e fluxos de autenticação.
+- **Documentação e explicações**: geração de comentários e instruções de uso.
 - **Ajustes iterativos**: aplicação de patches, refatoração incremental e correção de bugs com feedback imediato.
+
+---
+
+## IA como ferramenta auditada
+
+A IA foi utilizada como aceleradora de tarefas repetitivas e sugestões de código, mas todas as decisões de arquitetura, segurança e experiência do usuário foram validadas, adaptadas e revisadas por mim. A IA não substituiu o papel do programador, apenas potencializou a produtividade. Todo código gerado foi revisado, testado e ajustado para garantir alinhamento ao objetivo do projeto.
 
 ---
 
@@ -35,7 +58,6 @@ O principal objetivo é mostrar como a IA, especialmente ferramentas como GitHub
 
 - **Validação humana é essencial**: toda sugestão da IA foi revisada, adaptada e testada antes de ser incorporada ao projeto.
 - **IA como copiloto, não piloto**: as decisões finais de arquitetura, segurança e experiência do usuário sempre passaram por análise crítica.
-- **Foco didático**: limitações e escolhas (ex: não permitir edição de tarefas) foram mantidas para reforçar o aprendizado de conceitos fundamentais.
 - **Documentação viva**: o README e os comentários refletem o processo de desenvolvimento assistido por IA, servindo de guia para outros estudantes e desenvolvedores.
 
 ---
@@ -82,7 +104,7 @@ docker-compose up --build
 - Configure o arquivo `.env` do backend (exemplo em `backend/.env`).
 - Configure o arquivo `.env` do frontend (exemplo em `frontend/.env`).
 
-> O docker-compose atual não sobe o banco de dados. Recomenda-se usar um serviço gerenciado (Neon, Render, Railway) ou rodar um container PostgreSQL à parte.
+> O docker-compose atual não sobe o banco de dados. Recomenda-se usar um serviço gerenciado ou rodar um container PostgreSQL à parte.
 
 ---
 
@@ -101,7 +123,7 @@ docker run --name postgres-tarefas -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=
 ```bash
 docker build -t backend-tarefas ./backend
 # Depois
-# docker run -p 3001:3001 --env-file ./backend/.env backend-tarefas
+docker run -p 3001:3001 --env-file ./backend/.env backend-tarefas
 ```
 
 - Você pode adaptar um arquivo `docker-compose.yml` para orquestrar backend, banco e frontend juntos.
