@@ -1,4 +1,5 @@
 import { useState } from "react";
+import githubIcon from '/src/assets/github.svg';
 
 const backend = import.meta.env.VITE_BACKEND;
 
@@ -44,13 +45,14 @@ export default function Auth({ onAuth }) {
   
   return (
     <div
-      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 backdrop-blur-sm text-[hsl(var(--color-text))] bg-white dark:bg-[radial-gradient(circle_at_top,_#4c1d95,_#1e293b_55%,_#020617_100%)]"
+      className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#3b2177] via-[#1e293b] to-[#0f172a] text-white"
+      style={{fontFamily: 'Inter, Arial, sans-serif'}}
     >
       <div className="max-w-md mx-auto flex flex-col items-center justify-center min-h-[70vh]">
         <div className="w-full glass-card p-8 rounded-3xl shadow-xl backdrop-blur-md border border-white/60 bg-black/60 dark:bg-black/70 flex flex-col justify-center hover:shadow-2xl hover:backdrop-blur-xl hover:border-white/80 hover:bg-black/80 transition-all duration-300">
           <div className="flex flex-col items-center mb-8">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center mb-2">
-              <img src="/src/assets/logo.svg" className="w-8 h-8" alt="Logo" />
+              <img src="/logo.svg" className="w-8 h-8" alt="Logo" />
             </div>
             <h2 className="text-3xl font-black text-center text-white/90 drop-shadow-lg">
               {isLogin ? "Bem-vindo!" : "Cadastre-se"}
@@ -90,6 +92,20 @@ export default function Auth({ onAuth }) {
           )}
         </div>
       </div>
+      {/* Botão flutuante do GitHub */}
+      <a
+        href="https://github.com/Joaoptoaldo/laboratorio-rotas-react-IA"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition text-white text-sm font-medium backdrop-blur"
+        title="Ver código fonte do projeto no GitHub"
+        aria-label="Ver código fonte do projeto no GitHub"
+        style={{ backdropFilter: 'blur(6px)' }}
+      >
+        <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
+        <span className="hidden sm:inline">Link do projeto</span>
+        <span className="sm:hidden">GitHub</span>
+      </a>
     </div>
   );
 }
